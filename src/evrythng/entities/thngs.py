@@ -11,7 +11,7 @@ field_specs = {
         'description': 'str',
         'product': 'ref',
         'location': 'location',
-        'identifiers': 'dict_of_dict',
+        'identifiers': 'dict',
         'properties': 'dict',
         'tags': 'list_of_str',
         'collections': 'list_of_str',
@@ -61,7 +61,8 @@ def create_thng(name, description=None, product=None, location=None,
                          **(request_kwargs or {}))
 
 
-def list_thngs(api_key=None, request_kwargs=None):
+
+def list_thngs(api_key=None, project_id=None, request_kwargs=None):
     return utils.request('GET', '/thngs', api_key=api_key, accept=True,
                          **(request_kwargs or {}))
 

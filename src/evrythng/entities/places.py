@@ -10,18 +10,19 @@ field_specs = {
         'position': 'geojson',
         'address': 'address',
         'description': 'str',
+        'identifiers': 'dict',
         'icon': 'str',
         'tags': 'list_of_str',
         'customFields': 'dict',
     },
     'required': ('name',),
     'readonly': ('id', 'createdAt', 'updatedAt'),
-    'writable': ('position', 'address', 'description', 'icon', 'tags',
+    'writable': ('position', 'address', 'description', 'identifiers', 'icon', 'tags',
                  'customFields'),
 }
 
 
-def create_place(name, position=None, address=None, description=None,
+def create_place(name, position=None, address=None, description=None, identifiers=None,
                  icon=None, tags=None, customFields=None, api_key=None,
                  request_kwargs=None):
     kwargs = locals()
@@ -38,7 +39,7 @@ def read_place(place, api_key=None, request_kwargs=None):
     return utils.request('GET', url, api_key=api_key, **(request_kwargs or {}))
 
 
-def update_place(place, name=None, position=None, address=None,
+def update_place(place, name=None, position=None, address=None,identifiers=None,
                  description=None, icon=None, tags=None, customFields=None,
                  api_key=None, request_kwargs=None):
     kwargs = locals()
